@@ -1,0 +1,807 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* Main Container */
+.main-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 50%, #f3e8ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.background-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.7;
+    background-image: 
+        url('ccc.jpg'),
+        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.5) 0%, transparent 25%),
+        radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.5) 0%, transparent 25%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header Section */
+.header-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #000206, #000307);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000206d0;
+    margin-bottom: 1.5rem;
+}
+
+.header-section p {
+    color: #050506;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+
+
+.form-header, .chat-header {
+    margin-bottom: 1.5rem;
+}
+
+.form-icon, .chat-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.chat-icon {
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+}
+
+.form-header h3, .chat-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.form-header p, .chat-header p {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.form-group select:focus {
+    outline: none;
+    ring: 2px solid #3b82f6;
+    border-color: transparent;
+}
+
+.form-group select:hover {
+    border-color: #93c5fd;
+}
+
+/* Buttons */
+#find-route-btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#find-route-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+#find-route-btn:disabled {
+    background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading-spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.error-message::before {
+    content: "⚠️ ";
+}
+
+/* Route Result */
+.route-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #f0fdf4, #dbeafe);
+    border: 1px solid #bbf7d0;
+}
+
+.route-result h4 {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+}
+
+.result-details {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.detail-row span:first-child {
+    color: #64748b;
+}
+
+.detail-row span:last-child {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.route-steps {
+    padding-top: 0.75rem;
+    border-top: 1px solid #bbf7d0;
+}
+
+.route-steps span:first-child {
+    color: #64748b;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#route-path {
+    font-size: 0.75rem;
+    color: #374151;
+}
+
+.show-map-btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.show-map-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Chat Interface */
+.chat-messages {
+    height: 12rem;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(248, 250, 252, 0.5);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.message {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    max-width: 85%;
+}
+
+.user-message {
+    background: #3b82f6;
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.bot-message {
+    background: white;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.chat-input-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.input-container {
+    flex: 1;
+    position: relative;
+}
+
+#chat-input {
+    width: 100%;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    color: #374151;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+#chat-input:focus {
+    outline: none;
+    ring: 2px solid #14b8a6;
+    border-color: transparent;
+}
+
+.voice-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.375rem;
+    border-radius: 0.5rem;
+    background: rgba(20, 184, 166, 0.1);
+    color: #14b8a6;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.voice-btn:hover {
+    background: rgba(20, 184, 166, 0.2);
+}
+
+.voice-btn.listening {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.send-btn {
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.send-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.send-btn:disabled {
+    background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.listening-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.75rem;
+    color: #ef4444;
+    font-size: 0.875rem;
+}
+
+.pulse-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #ef4444;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Map Interface */
+.map-interface {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: #1e293b;
+}
+
+.map-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: #f1f5f9;
+    color: #374151;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.map-header h1 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.spacer {
+    width: 4rem;
+}
+
+.map-container {
+    padding-top: 5rem;
+    height: 100vh;
+    width: 100%;
+}
+
+.route-info-panel {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: 24rem;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+}
+
+.route-info-panel h3 {
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+}
+
+.info-details {
+    font-size: 0.875rem;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.info-row span:first-child {
+    color: #64748b;
+}
+
+.info-row span:last-child {
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.route-steps-container {
+    padding-top: 0.75rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.route-steps-container > span {
+    color: #64748b;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#map-route-steps {
+    font-size: 0.75rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.step-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.step-dot.start {
+    background: #10b981;
+}
+
+.step-dot.end {
+    background: #ef4444;
+}
+
+.step-dot.waypoint {
+    background: #3b82f6;
+}
+
+.step-name {
+    color: #374151;
+    flex: 1;
+}
+
+.step-distance {
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-left: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .header-section {
+        text-align: center;
+    }
+    
+    .header-section h1 {
+        font-size: 2rem;
+    }
+    
+    .header-section h2 {
+        font-size: 1.25rem;
+    }
+    
+    .navigation-form, .chat-interface {
+        min-width: 100%;
+        max-width: none;
+    }
+    
+    .route-info-panel {
+        left: 1rem;
+        right: 1rem;
+        max-width: none;
+    }
+}
+/* Floating Chat Widget */
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* Robot Button */
+.chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Chat Box */
+.chat-interface {
+    position: absolute;
+    bottom: 80px; /* appears above the robot button */
+    right: 0;
+    width: 300px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-interface.hidden {
+    display: none;
+}
+/* Floating Robot Button */
+.chat-toggle-btn {
+  position: fixed;
+  bottom: 20px;   /* distance from bottom */
+  right: 20px;    /* distance from right */
+  width: 60px;    /* button size */
+  height: 60px;
+  border-radius: 50%;
+  font-size: 2rem; /* 🤖 size */
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1000; /* always on top */
+}
+
+.chat-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+/* Chat toggle button */
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0e66eb;
+  color: white;
+  border-radius: 50%;
+  width: 70px;   /* bigger robot button */
+  height: 70px;
+  font-size: 36px; /* bigger robot emoji */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1001;
+  transition: transform 0.2s;
+}
+#chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Chat container */
+#chat-container {
+  position: fixed;
+  bottom: 100px;   /* sits above robot button */
+  right: 20px;
+  width: 380px;    /* bigger width */
+  height: 500px;   /* taller */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  display: none;   /* hidden initially */
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Chat header */
+.chat-header {
+  background: #367ce5;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Chat messages */
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+/* Input area */
+.chat-input-form {
+  display: flex;
+  padding: 8px;
+  border-top: 1px solid #ddd;
+  background: #fafafa;
+}
+.chat-input-form input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.chat-input-form button {
+  margin-left: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #53e069;
+  color: white;
+  cursor: pointer;
+}
+/* Chat container - smaller box */
+#chat-container {
+  position: fixed;
+  bottom: 85px;   /* above robot button */
+  right: 20px;
+  width: 300px;   /* smaller width */
+  height: 420px;  /* smaller height */
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  display: none;   /* hidden initially */
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Chat header */
+.chat-header {
+  background: #53e069;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px; /* slightly smaller text */
+}
+.navigation-form {
+  background: rgba(255, 255, 255, 0.2); /* white with 90% opacity */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* softer border */
+  border-radius: 12px; 
+  padding: 16px; 
+  margin: 12px 0; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  backdrop-filter: blur(8px); /* adds frosted-glass effect */
+    /* 🔒 Fix size */
+  width: 420px;      /* fixed width */
+  min-height: 480px; /* fixed height */
+}
+.header-box {
+  background: rgba(255, 255, 255,0.2); /* white, transparent */
+  backdrop-filter: blur(10px);          /* soft blur effect */
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* keeps box size just around content */
+}
+
+
+
+
+
