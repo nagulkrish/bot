@@ -4,10 +4,10 @@ const CAMPUS_LOCATIONS = [
     { id: 'gate2', name: 'Main Gate 2', coordinates: [13.2213743, 77.7551241] },
     { id: 'flagpost', name: 'Flag Post', coordinates: [13.2216727, 77.7549353] },
     { id: 'admin1', name: 'Academic Block A', coordinates: [13.2221283, 77.7552384] },
-    { id: 'auditorium', name: 'Auditorium', coordinates: [13.2222219, 77.7552483] },
-    { id: 'cafe', name: 'Cafe', coordinates: [13.2222655, 77.7551286] },
-    { id: 'clinic', name: 'Clinic', coordinates: [13.2222017, 77.7547637] },
-    { id: 'library', name: 'Library', coordinates: [13.2217709, 77.7554624] },
+    { id: 'auditorium', name: 'Auditorium', coordinates: [13.2222219, 77.7552483], floor: 'under ground' },
+    { id: 'cafe', name: 'Cafe', coordinates: [13.2222655, 77.7551286], wing: 'Right Wing', floor: 'lower ground' },
+    { id: 'clinic', name: 'Nursing station', coordinates: [13.2222017, 77.7547637], wing: 'Right Wing', floor: '1st Floor', room: '121'},
+    { id: 'library', name: 'Library', coordinates: [13.2217709, 77.7554624], wing: 'Left Wing', floor: 'under ground' },
     { id: 'admin2', name: 'Academic Block B', coordinates: [13.2233225, 77.7559227] },
     { id: 'parents_stay', name: 'Guest Stay Area', coordinates: [13.2233212, 77.7541116] },
     { id: 'staff_quarters', name: 'Staff Quarters', coordinates: [13.2237132, 77.7572504] },
@@ -17,8 +17,12 @@ const CAMPUS_LOCATIONS = [
     { id: 'laundry', name: 'Laundry', coordinates: [13.2242253, 77.7586170] },
     { id: 'mart', name: 'Mart', coordinates: [13.2245387, 77.7591692] },
     { id: 'sports_entry', name: 'Sports Entry', coordinates: [13.2264986, 77.7594133] },
-    { id: 'sports_area', name: 'Sports Area', coordinates: [13.228393, 77.757574] }
-
+    { id: 'sports_area', name: 'Sports Area', coordinates: [13.2281331, 77.7577758] },
+    { id: "volleyball", name: "Volleyball Court", coordinates: [13.2283593, 77.7583008] },
+    { id: "tennis", name: "Tennis Court", coordinates: [13.2280802, 77.7581412] },
+    { id: "basketball", name: "Basketball Court", coordinates: [13.2288090, 77.7581188] },
+    { id: "football", name: "Football Ground", coordinates: [13.2280078, 77.7564115] },
+    { id: "cricket", name: "Cricket Ground", coordinates: [13.2289373, 77.7572172] }
 
 ];
 
@@ -65,7 +69,20 @@ const pathConnections = [
     { from: 'clinic', to: 'flagpost', distance: 90 },
     { from: 'library', to: 'admin1', distance: 60 },
     { from: 'library', to: 'admin2', distance: 80 },
-    { from: 'library', to: 'auditorium', distance: 70 }
+    { from: 'library', to: 'auditorium', distance: 70 },
+    { from: "volleyball", to: "sports_area", distance: 80 },
+
+    { from: "sports_area", to: "tennis", distance: 60 },
+    { from: "tennis", to: "sports_area", distance: 60 },
+
+    { from: "sports_area", to: "basketball", distance: 70 },
+    { from: "basketball", to: "sports_area", distance: 70 },
+
+    { from: "sports_area", to: "football", distance: 150 },
+    { from: "football", to: "sports_area", distance: 150 },
+
+    { from: "sports_area", to: "cricket", distance: 120 },
+    { from: "cricket", to: "sports_area", distance: 120 },
 
 ];
 
@@ -697,7 +714,16 @@ function initializeMap() {
             // --- Popup with image ---
             let popupContent = `<div style="text-align: center;">
                 <h3 style="margin: 0 0 5px 0; font-weight: 600;">${step.location.name}</h3>`;
-            
+                if (step.location.wing) {
+                    popupContent += `<p style="margin: 2px 0; color: #64748b; font-size: 0.85rem;">Wing: ${step.location.wing}</p>`;
+                }
+                if (step.location.floor) {
+                    popupContent += `<p style="margin: 2px 0; color: #64748b; font-size: 0.85rem;">Floor: ${step.location.floor}</p>`;
+                }
+                if (step.location.room) {
+                    popupContent += `<p style="margin: 2px 0; color: #64748b; font-size: 0.85rem;">Room: ${step.location.room}</p>`;
+                }
+
             // Add Start/End/Waypoint label
             if (isStart) {
                 popupContent += '<p style="margin: 0; color: #10b981; font-weight: 500; font-size: 0.875rem;">Start</p>';
